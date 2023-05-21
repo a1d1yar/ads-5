@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 public class BST<K extends Comparable<K>, V> {
     private Node root;
     private int size;
@@ -46,11 +48,46 @@ public class BST<K extends Comparable<K>, V> {
             }
         }
         public void delete(K key){
+            root = deleteNode(root, key);
+            size--;
+        }
+        private Node deleteNode(Node node, K key) {
+            if (node == null) {
+                return null;
+            }
+
+            int cmp = key.compareTo (node.key);
+            if (cmp < 0) {
+                node.left = deleteNode (node.left, key);
+            } else if (cmp > 0) {
+                node.right = deleteNode (node.right, key);
+            } else {
+                if (node.left == null) {
+                    return node.right;
+                } else if (node.right == null) {
+                    return node.left;
+                } else {
+                    Node successor = findSuccessor (node.right);
+                    node.key = successor.key;
+                    node.val = successor.val;
+                    node.right = deleteNode (node.right, successor.key);
+                }
+            }
+
+            return node;
 
         }
-        public  Iterable<K> iterator(){
+        private Node findSuccessor(Node node) {
+            while (node.left != null) {
+                node = node.left;
+            }
+            return node;
+        }
+        public int size() {
+            return size;
+        }
 
         }
 
-    }
 }
+
