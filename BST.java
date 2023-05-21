@@ -5,9 +5,9 @@ public class BST<K extends Comparable<K>, V> {
     private Node root;
     private int size;
 
-    public class Node {
-        K key;
-        V val;
+    private class Node {
+        private K key;
+        private V val;
         private Node left, right;
 
         public Node(K key, V val) {
@@ -16,6 +16,12 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Inserts a key-value pair into the binary search tree.
+     *
+     * @param key the key to insert
+     * @param val the value associated with the key
+     */
     public void put(K key, V val) {
         root = putNode(root, key, val);
         size++;
@@ -38,6 +44,12 @@ public class BST<K extends Comparable<K>, V> {
         return node;
     }
 
+    /**
+     * Retrieves the value associated with the specified key.
+     *
+     * @param key the key to retrieve the value for
+     * @return the value associated with the key, or null if the key is not found
+     */
     public V get(K key) {
         Node node = getNode(root, key);
         return node != null ? node.val : null;
@@ -56,6 +68,11 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Deletes the specified key and its associated value from the binary search tree.
+     *
+     * @param key the key to delete
+     */
     public void delete(K key) {
         root = deleteNode(root, key);
         size--;
@@ -94,10 +111,20 @@ public class BST<K extends Comparable<K>, V> {
         return node;
     }
 
+    /**
+     * Returns the size of the binary search tree.
+     *
+     * @return the number of key-value pairs in the binary search tree
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Returns an iterable collection of keys in ascending order.
+     *
+     * @return an iterable collection of keys
+     */
     public Iterable<K> iterator() {
         List<K> keys = new ArrayList<>();
         inorderTraversal(root, keys);
@@ -112,6 +139,11 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Returns an iterable collection of key-value pairs (nodes) in ascending order.
+     *
+     * @return an iterable collection of key-value pairs (nodes)
+     */
     public Iterable<Node> entries() {
         List<Node> entries = new ArrayList<>();
         entryInorderTraversal(root, entries);
