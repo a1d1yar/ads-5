@@ -5,9 +5,9 @@ public class BST<K extends Comparable<K>, V> {
     private Node root;
     private int size;
 
-    private class Node {
-        private K key;
-        private V val;
+    public class Node {
+        K key;
+        V val;
         private Node left, right;
 
         public Node(K key, V val) {
