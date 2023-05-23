@@ -5,9 +5,9 @@ public class BST<K extends Comparable<K>, V> {
     private Node root;
     private int size;
 
-    private class Node {
-        private K key;
-        private V val;
+    class Node {
+        K key;
+        V val;
         private Node left, right;
 
         public Node(K key, V val) {
@@ -157,4 +157,18 @@ public class BST<K extends Comparable<K>, V> {
             entryInorderTraversal(node.right, entries);
         }
     }
+    public int height(){
+
+        return heigt(root);
+    }
+    private  int heigt(Node node){
+        if (node == null) {
+            return 0;
+        } else {
+            int leftH = heigt(node.left);
+            int rightH = heigt(node.right);
+            return 1 + Math.max(leftH, rightH);
+        }
+    }
+
 }

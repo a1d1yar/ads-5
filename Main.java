@@ -11,7 +11,7 @@ public class Main {
         bst.put(6, "Kokshetau");
 
 
-        System.out.println("val of  key is " + bst.get(3));
+       /* System.out.println("val of  key is " + bst.get(3));
 
 
         //bst.delete(2);
@@ -28,7 +28,8 @@ public class Main {
         for (BST.Node node : bst.entries()) {
             System.out.println("Key is " + node.key + ", Value is  " + node.val);
         }
-
+          */
         System.out.println("Size of tree: " + bst.size());
+        System.out.println ("Height of a tree: "+ bst.height ());
     }
 }
